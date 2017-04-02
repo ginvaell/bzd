@@ -11,7 +11,7 @@
     <script src="vendors/vue.min.js"></script>
     <script src="vendors/jquery-3.2.0.min.js"></script>
     <script src="vendors/tether/js/tether.min.js"></script>
-    <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="vendors/bootstrap/js/bootstrap.min.js"></script>-->
     <script src="index.js"></script>
 
 </head>
@@ -28,6 +28,14 @@
                     <b>Исходные данные</b>
                 </div>
                 <div class="card-block">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn " :class="position === 'row' ? 'btn-info' : 'btn-secondary'">
+                            <input type="radio" id="option1" name="isrow" v-model="position" value="row"> В ряд
+                        </label>
+                        <label class="btn " :class="position === 'square' ? 'btn-info' : 'btn-secondary'">
+                            <input type="radio" id="option2" name="isrow" v-model="position" value="square"> По контуру
+                        </label>
+                    </div>
                     <div class="form-group row" v-for="param in model">
                         <label :for="param.name" class="col-6 col-form-label">{{param.label}}</label>
                         <div class="col-6">

@@ -72,6 +72,8 @@ var data = {
         }
     },
 
+    position: 'row',
+
     gnd: {},
 
     pipeUse: null,
@@ -91,7 +93,7 @@ var app = new Vue({
     methods: {
         runAll: function () {
             this.gnd = new Gnd({
-                isRow: true,
+                isRow: this.position === 'row',
                 soilResistivity: this.model.rho.value,
                 seasonalityCoefficient: this.model.phi.value,
                 l: this.model.l.value,
@@ -105,7 +107,7 @@ var app = new Vue({
             this.r_pipe = this.gnd.r_pipe.toFixed(3);
             this.n_approximate = this.gnd.n_approximate;
 
-            this.pipeUse = this.gnd.getPipeUse().toFixed(3) ;
+            this.pipeUse = this.gnd.getPipeUse().toFixed(3);
 
             this.runN();
         },
@@ -126,10 +128,10 @@ var app = new Vue({
         }
     },
     computed: {
-      isOk: function () {
-          console.log(this.model.r.value)
-          return this.r_common < this.model.r.value;
-      }
+        isOk: function () {
+            console.log(this.model.r.value)
+            return this.r_common < this.model.r.value;
+        }
     },
     watch: {
         model: {
@@ -137,6 +139,10 @@ var app = new Vue({
             handler: function () {
                 this.runAll();
             }
+        },
+
+        position: function () {
+            this.runAll();
         },
 
         pipeUse: function () {
