@@ -72,7 +72,12 @@ var data = {
         }
     },
 
-    gnd: {}
+    gnd: {},
+
+    pipeUse: null,
+    n: null,
+    bandUse: null
+
 };
 
 var app = new Vue({
@@ -96,11 +101,11 @@ var app = new Vue({
                 b: this.model.b.value,
                 r_permissible: this.model.r.value
             });
-            this.r_calc = this.gnd.r_calc;
-            this.r_pipe = this.gnd.r_pipe;
+            this.r_calc = this.gnd.r_calc.toFixed(3);
+            this.r_pipe = this.gnd.r_pipe.toFixed(3);
             this.n_approximate = this.gnd.n_approximate;
 
-            this.pipeUse = this.gnd.getPipeUse();
+            this.pipeUse = this.gnd.getPipeUse().toFixed(3) ;
 
             this.runN();
         },
@@ -110,14 +115,14 @@ var app = new Vue({
         },
         runR_band: function () {
             this.gnd.findR_band(this.n);
-            this.r_band = this.gnd.r_band;
+            this.r_band = this.gnd.r_band.toFixed(3);
             this.foundL = this.gnd.L;
-            this.bandUse = this.gnd.getBandUse();
+            this.bandUse = this.gnd.getBandUse().toFixed(3);
             this.runR_common();
         },
         runR_common: function () {
             this.gnd.findR_common(this.n, this.bandUse);
-            this.r_common = this.gnd.r_common;
+            this.r_common = this.gnd.r_common.toFixed(3);
         }
     },
     watch: {
@@ -126,7 +131,20 @@ var app = new Vue({
             handler: function () {
                 this.runAll();
             }
+        },
+
+        pipeUse: function () {
+            this.runN();
+        },
+
+        n: function () {
+            this.runR_band();
+        },
+
+        bandUse: function () {
+            this.runR_common();
         }
+
     }
 
 
