@@ -207,57 +207,6 @@ Gnd.prototype.getBandUse = function () {
     return this.getFromTable(this.bandUseTable);
 };
 
-var gnd, pipeUse, bandUse, n;
-
-function runAll() {
-    gnd = new Gnd({
-        isRow: true,
-        soilResistivity: 7157.6,
-        seasonalityCoefficient: 2.4,
-        l: 250,
-        h: 75,
-        d: 5,
-        a: 500,
-        b: 5,
-        r_permissible: 4
-    });
-    pipeUse = gnd.getPipeUse();
-    console.log('R_calc', gnd.r_calc);
-    console.log('R_pipe', gnd.r_pipe);
-    console.log('n_approximate', gnd.n_approximate);
-    console.log('Selected pipe utilization ratio! ', pipeUse);
-
-    runN();
-}
-
-function runN() {
-    n = gnd.findN(pipeUse);
-
-    console.log('found N!', n);
-
-    runR_band(n);
-}
-
-function runR_band() {
-    gnd.findR_band(n);
-
-    bandUse = gnd.getBandUse();
-
-    console.log('L', gnd.L);
-    console.log('R_band', gnd.r_band);
-    console.log('Selected band utilization ratio! ', bandUse);
-
-    runR_common();
-}
-
-function runR_common() {
-    gnd.findR_common(n, bandUse);
-
-    console.log('R_common', gnd.r_common);
-}
-
-runAll();
-
 
 // console.log('R_calc', gnd.r_calc);
 // console.log('R_pipe', gnd.r_pipe);

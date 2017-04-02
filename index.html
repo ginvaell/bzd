@@ -1,4 +1,4 @@
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <title>Сопротивления заземлителей</title>
     <meta charset="utf-8">
@@ -28,93 +28,13 @@
                     <b>Исходные данные</b>
                 </div>
                 <div class="card-block">
-                    <div class="form-group row">
-                        <label for="in-l" class="col-6 col-form-label ">Длина заземлителя</label>
+                    <div class="form-group row" v-for="param in model">
+                        <label  :for="param.name" class="col-6 col-form-label">{{param.label}}</label>
                         <div class="col-6">
                             <div class="input-group">
-                                <span class="input-group-addon">l = </span>
-                                <input type="number" class="form-control" id="in-l">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-d" class="col-6 col-form-label">Диаметр заземлителя</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">d = </span>
-                                <input type="number" class="form-control" id="in-d">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-h" class="col-6 col-form-label">Глубина заложения</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">h = </span>
-                                <input type="number" class="form-control" id="in-h">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-a" class="col-6 col-form-label">Расстояние между заземлителями</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">a = </span>
-                                <input type="number" class="form-control" id="in-a">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-phi" class="col-6 col-form-label">Климатический коэффициент</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">φ = </span>
-                                <input type="number" class="form-control" id="in-phi">
-                                <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-l1" class="col-6 col-form-label">Глубина забивки электрода</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">l1 = </span>
-                                <input type="number" class="form-control" id="in-l1">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-d1" class="col-6 col-form-label">Диаметр электрода</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">d1 = </span>
-                                <input type="number" class="form-control" id="in-d1">
-                                <span class="input-group-addon">см</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-r" class="col-6 col-form-label">Допустимое сопротивление</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">R = </span>
-                                <input type="number" class="form-control" id="in-r">
-                                <span class="input-group-addon">Ом</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="in-b" class="col-6 col-form-label">Ширина полосы</label>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">b = </span>
-                                <input type="number" class="form-control" id="in-b">
-                                <span class="input-group-addon">см</span>
+                                <span class="input-group-addon" >{{param.name}} = </span>
+                                <input v-model="param.value" type="number" class="form-control" :id="param.name">
+                                <span class="input-group-addon">{{param.unit || '&nbsp;&nbsp;&nbsp;&nbsp;'}}</span>
                             </div>
                         </div>
                     </div>
@@ -125,7 +45,16 @@
             <div class="card">
                 <div class="card-header"><b>Результаты</b></div>
                 <div class="card-block">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, beatae iure molestias quam quibusdam quidem sequi unde vel vitae! Aliquid debitis dicta eum iusto vero. Aperiam fuga laborum optio voluptatem.
+                    Расчетное сопротивление грунта {{r_calc}}<br>
+                    Сопротивление электрода {{r_pipe}}<br>
+                    Приблизительное число электродов {{n_approximate}}<br>
+                    !Коэффициент использования электрода {{pipeUse}}<br>
+                    !Количество электродов {{n}}<br>
+                    Длина полосы {{foundL}}<br>
+                    Сопротивление полосы {{r_band}}<br>
+                    !Коэффициент использования полосы полосы {{bandUse}}<br>
+                    Общее сопротивление {{r_common}}<br>
+
                 </div>
             </div>
         </div>
