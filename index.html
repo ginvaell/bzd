@@ -29,10 +29,10 @@
                 </div>
                 <div class="card-block">
                     <div class="form-group row" v-for="param in model">
-                        <label  :for="param.name" class="col-6 col-form-label">{{param.label}}</label>
+                        <label :for="param.name" class="col-6 col-form-label">{{param.label}}</label>
                         <div class="col-6">
                             <div class="input-group">
-                                <span class="input-group-addon" >{{param.name}} = </span>
+                                <span class="input-group-addon">{{param.name}} = </span>
                                 <input v-model="param.value" type="number" class="form-control" :id="param.name">
                                 <span class="input-group-addon">{{param.unit || '&nbsp;&nbsp;&nbsp;&nbsp;'}}</span>
                             </div>
@@ -45,15 +45,62 @@
             <div class="card">
                 <div class="card-header"><b>Результаты</b></div>
                 <div class="card-block">
-                    Расчетное сопротивление грунта {{r_calc}}<br>
-                    Сопротивление электрода {{r_pipe}}<br>
-                    Приблизительное число электродов {{n_approximate}}<br>
-                    !Коэффициент использования электрода {{pipeUse}}<br>
-                    !Количество электродов {{n}}<br>
-                    Длина полосы {{foundL}}<br>
-                    Сопротивление полосы {{r_band}}<br>
-                    !Коэффициент использования полосы полосы {{bandUse}}<br>
-                    Общее сопротивление {{r_common}}<br>
+                    <ul class="list-group">
+
+                        <li class="list-group-item list-group-item-info justify-content-between">
+                            Расчетное сопротивление грунта
+                            <span class="badge badge-default badge-pill">{{r_calc}}</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-info justify-content-between">
+                            Сопротивление электрода
+                            <span class="badge badge-default badge-pill">{{r_pipe}}</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-info justify-content-between">
+                            Приблизительное число электродов
+                            <span class="badge badge-default badge-pill">{{n_approximate}}</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-warning justify-content-between">
+                            <label for="coef" class="col-9">Коэффициент использования электрода</label>
+                            <div class="col-3">
+                                <input type="number" class="form-control" id="coef" v-model="pipeUse">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item list-group-item-success justify-content-between">
+                            <label for="count-n" class="col-9">Количество электродов</label>
+                            <div class="col-3">
+                                <input type="number" class="form-control" id="count-n" v-model="n">
+                            </div>
+                        </li>
+
+
+                        <li class="list-group-item list-group-item-success justify-content-between">
+                            Длина полосы
+                            <span class="badge badge-default badge-pill">{{foundL}}</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-success justify-content-between">
+                            Сопротивление полосы
+                            <span class="badge badge-default badge-pill">{{r_band}}</span>
+                        </li>
+
+                        <li class="list-group-item list-group-item-danger justify-content-between">
+                            <label for="band-use" class="col-9">Коэффициент использования полосы полосы</label>
+                            <div class="col-3">
+                                <input type="number" class="form-control" id="band-use" v-model="bandUse">
+                            </div>
+                        </li>
+
+                        <li class="list-group-item list-group-item-danger justify-content-between">
+                            Общее сопротивление
+                            <span class="badge badge-default badge-pill">{{r_common}}</span>
+                        </li>
+
+                    </ul>
+
 
                 </div>
             </div>
