@@ -1,14 +1,137 @@
 <html>
 <head>
-    <title>������� �������� �����</title>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+    <title>Сопротивления заземлителей</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="vendors/tether/css/tether.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="vendors/vue.min.js"></script>
+    <script src="vendors/jquery-3.2.0.min.js"></script>
+    <script src="vendors/tether/js/tether.min.js"></script>
+    <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
 
 </head>
 
 <body>
+<div class="container" id="app">
+    <h1>Расчет сопротивления заземлителей</h1>
+    <p class="lead">Другой очень важный и полезный текст здесь</p>
 
-��� ������� �������� ����� "� ���� ��������"
+    <div class="row justify-content-between">
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    <b>Исходные данные</b>
+                </div>
+                <div class="card-block">
+                    <div class="form-group row">
+                        <label for="in-l" class="col-6 col-form-label ">Длина заземлителя</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">l = </span>
+                                <input type="number" class="form-control" id="in-l">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-d" class="col-6 col-form-label">Диаметр заземлителя</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">d = </span>
+                                <input type="number" class="form-control" id="in-d">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-h" class="col-6 col-form-label">Глубина заложения</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">h = </span>
+                                <input type="number" class="form-control" id="in-h">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-a" class="col-6 col-form-label">Расстояние между заземлителями</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">a = </span>
+                                <input type="number" class="form-control" id="in-a">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-phi" class="col-6 col-form-label">Климатический коэффициент</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">φ = </span>
+                                <input type="number" class="form-control" id="in-phi">
+                                <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-l1" class="col-6 col-form-label">Глубина забивки электрода</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">l1 = </span>
+                                <input type="number" class="form-control" id="in-l1">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-d1" class="col-6 col-form-label">Диаметр электрода</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">d1 = </span>
+                                <input type="number" class="form-control" id="in-d1">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-r" class="col-6 col-form-label">Допустимое сопротивление</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">R = </span>
+                                <input type="number" class="form-control" id="in-r">
+                                <span class="input-group-addon">Ом</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="in-b" class="col-6 col-form-label">Ширина полосы</label>
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">b = </span>
+                                <input type="number" class="form-control" id="in-b">
+                                <span class="input-group-addon">см</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header"><b>Результаты</b></div>
+                <div class="card-block">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, beatae iure molestias quam quibusdam quidem sequi unde vel vitae! Aliquid debitis dicta eum iusto vero. Aperiam fuga laborum optio voluptatem.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script src="app.js"></script>
 </body>
 </html>
