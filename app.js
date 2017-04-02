@@ -117,13 +117,19 @@ var app = new Vue({
             this.gnd.findR_band(this.n);
             this.r_band = this.gnd.r_band.toFixed(3);
             this.foundL = this.gnd.L;
-            this.bandUse = this.gnd.getBandUse().toFixed(3);
+            this.bandUse = this.gnd.getBandUse(this.n).toFixed(3);
             this.runR_common();
         },
         runR_common: function () {
             this.gnd.findR_common(this.n, this.bandUse);
             this.r_common = this.gnd.r_common.toFixed(3);
         }
+    },
+    computed: {
+      isOk: function () {
+          console.log(this.model.r.value)
+          return this.r_common < this.model.r.value;
+      }
     },
     watch: {
         model: {
@@ -144,7 +150,6 @@ var app = new Vue({
         bandUse: function () {
             this.runR_common();
         }
-
     }
 
 

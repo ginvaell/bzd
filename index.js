@@ -178,13 +178,13 @@ Gnd.prototype.findR_common = function (n, bandUse) {
     this.r_common = this.r_pipe * this.r_band / (n * this.r_band * this.pipeUse + this.r_pipe * bandUse);
 };
 
-Gnd.prototype.getFromTable = function (table) {
+Gnd.prototype.getFromTable = function (table, n) {
     var alRatio = this.alRatio;
     var diff = Infinity;
     var diffI = -1;
 
     for (var i = 0; i < table.length; i++) {
-        var localDiff = Math.abs(table[i].count - this.n_approximate);
+        var localDiff = Math.abs(table[i].count - n);
         if (localDiff > diff) {
             diffI = i;
             break;
@@ -200,11 +200,11 @@ Gnd.prototype.getFromTable = function (table) {
 };
 
 Gnd.prototype.getPipeUse = function () {
-    return this.getFromTable(this.pipeUseTable);
+    return this.getFromTable(this.pipeUseTable, this.n_approximate);
 };
 
-Gnd.prototype.getBandUse = function () {
-    return this.getFromTable(this.bandUseTable);
+Gnd.prototype.getBandUse = function (n) {
+    return this.getFromTable(this.bandUseTable, n);
 };
 
 

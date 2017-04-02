@@ -19,7 +19,7 @@
 <body>
 <div class="container" id="app">
     <h1>Расчет сопротивления заземлителей</h1>
-    <p class="lead">Другой очень важный и полезный текст здесь</p>
+    <p class="lead">Нахождение общего сопротивения заземляющего устройства</p>
 
     <div class="row justify-content-between">
         <div class="col-5">
@@ -47,29 +47,29 @@
                 <div class="card-block">
                     <ul class="list-group">
 
-                        <li class="list-group-item list-group-item-info justify-content-between">
+                        <li class="list-group-item justify-content-between">
                             Расчетное сопротивление грунта
                             <span class="badge badge-default">{{r_calc}}&nbsp;&nbsp;&nbsp;Ом*см</span>
                         </li>
 
-                        <li class="list-group-item list-group-item-info justify-content-between">
+                        <li class="list-group-item justify-content-between">
                             Сопротивление электрода
                             <span class="badge badge-default">{{r_pipe}}&nbsp;&nbsp;&nbsp;Ом</span>
                         </li>
 
-                        <li class="list-group-item list-group-item-info justify-content-between">
+                        <li class="list-group-item justify-content-between">
                             Приблизительное число электродов
                             <span class="badge badge-default">{{n_approximate}}</span>
                         </li>
 
-                        <li class="list-group-item list-group-item-warning justify-content-between">
+                        <li class="list-group-item list-group-item-info justify-content-between">
                             <label for="coef" class="col-9">Коэффициент использования электрода</label>
                             <div class="col-3">
                                 <input type="number" class="form-control" id="coef" v-model="pipeUse">
                             </div>
                         </li>
 
-                        <li class="list-group-item list-group-item-success justify-content-between">
+                        <li class="list-group-item list-group-item-info justify-content-between">
                             <label for="count-n" class="col-9">Количество электродов</label>
                             <div class="col-3">
                                 <input type="number" class="form-control" id="count-n" v-model="n">
@@ -77,25 +77,25 @@
                         </li>
 
 
-                        <li class="list-group-item list-group-item-success justify-content-between">
+                        <li class="list-group-item justify-content-between">
                             Длина полосы
                             <span class="badge badge-default">{{foundL}}&nbsp;&nbsp;&nbsp;см</span>
                         </li>
 
-                        <li class="list-group-item list-group-item-success justify-content-between">
+                        <li class="list-group-item justify-content-between">
                             Сопротивление полосы
                             <span class="badge badge-default">{{r_band}}&nbsp;&nbsp;&nbsp;Ом</span>
                         </li>
 
-                        <li class="list-group-item list-group-item-danger justify-content-between">
+                        <li class="list-group-item list-group-item-info justify-content-between">
                             <label for="band-use" class="col-9">Коэффициент использования полосы полосы</label>
                             <div class="col-3">
                                 <input type="number" class="form-control" id="band-use" v-model="bandUse">
                             </div>
                         </li>
 
-                        <li class="list-group-item list-group-item-danger justify-content-between">
-                            Общее сопротивление
+                        <li class="list-group-item  justify-content-between" v-bind:class="[r_common < model.r.value ? 'list-group-item-success' : 'list-group-item-danger']">
+                            <p class="lead"><b>Общее сопротивление</b></p>
                             <span class="badge badge-default">{{r_common}}&nbsp;&nbsp;&nbsp;Ом</span>
                         </li>
 
